@@ -1,0 +1,38 @@
+//2021 May 7 #3
+
+class Circle {
+	int radius;
+public:
+	Circle(int radius = 0) { this->radius = radius; }
+	int getRadius() { return radius; }
+	void setRadius(int radius) { this->radius = radius; }
+	double getArea() { return 3.14 * radius * radius; };
+};
+class NamedCircle :public Circle {
+	string name;
+public:
+	NamedCircle(string name = "", int radius = 0) :Circle(radius) { ; this->name = name; }
+	string getName() { return name; }	
+	void setName(string name) { this->name = name; }
+};
+int main() {
+	NamedCircle c[5];
+	int num, T = 5;
+	string name, result;
+	double max = 0;
+	cout << "5개의 정수 반지름과 원의 이름을 입력하세요" << endl;
+	for (int i = 0; i < T; i++)
+	{
+		cout << i + 1 << ">>";
+		cin >> num;
+		getline(cin, name);
+		c[i].setName(name);
+		c[i].setRadius(num);
+		if (c[i].getArea() > max)
+		{
+			max = c[i].getArea();
+			result = c[i].getName();
+		}
+	}
+	cout << "가장 면적이 큰 피자는 " << result << "입니다.";
+}
